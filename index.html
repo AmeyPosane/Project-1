@@ -147,6 +147,11 @@
             font-weight: bold
         }
 
+        .stock {
+            color: #287642;
+            font-weight: bold
+        }
+
         .contact {
             text-align: center;
             background: #e5f0e1;
@@ -309,9 +314,7 @@
 
             <input id="email" placeholder="Email">
 
-            <input id="password"
-                   type="password"
-                   placeholder="Password">
+            <input id="password" type="password" placeholder="Password">
 
             <br>
 
@@ -340,9 +343,7 @@
 
             <input id="ae" placeholder="Admin Email">
 
-            <input id="ap"
-                   type="password"
-                   placeholder="Password">
+            <input id="ap" type="password" placeholder="Password">
 
             <br>
 
@@ -367,58 +368,39 @@
 
             <p id="paymentPlant"></p>
 
-            <input id="orderCustomer"
-                   placeholder="Customer Name">
+            <input id="orderCustomer" placeholder="Customer Name">
 
-            <input id="orderQty"
-                   type="number"
-                   min="1"
-                   value="1">
-
+            <input id="orderQty" type="number" min="1" value="1">
 
             <div class="payment-box">
 
                 <b>💳 Payment Method</b>
 
                 <label class="payment-option">
-                    <input type="radio"
-                           name="payment"
-                           value="Cash on Delivery"
-                           checked>
+                    <input type="radio" name="payment" value="Cash on Delivery" checked>
                     💵 Cash on Delivery
                 </label>
 
                 <label class="payment-option">
-                    <input type="radio"
-                           name="payment"
-                           value="UPI">
+                    <input type="radio" name="payment" value="UPI">
                     📱 UPI
                 </label>
 
                 <label class="payment-option">
-                    <input type="radio"
-                           name="payment"
-                           value="Card">
+                    <input type="radio" name="payment" value="Card">
                     💳 Card
                 </label>
 
             </div>
-
 
             <p>
                 <b>Total:</b>
                 ₹<span id="orderTotal">0</span>
             </p>
 
+            <button class="g" onclick="confirmOrder()">Confirm Order</button>
 
-            <button class="g"
-                    onclick="confirmOrder()">
-                Confirm Order
-            </button>
-
-            <button onclick="closePayment()">
-                Cancel
-            </button>
+            <button onclick="closePayment()">Cancel</button>
 
             <p id="paymentMessage"></p>
 
@@ -437,12 +419,11 @@
 
                 <h1>Bring Nature Home</h1>
 
-                <p>
-                    Fresh plants for a greener and healthier space
-                </p>
+                <p>Fresh plants for a greener and healthier space</p>
 
-                <button class="g"
-                        onclick="plantsSection.scrollIntoView({behavior:'smooth'})">
+                <button
+                    class="g"
+                    onclick="document.getElementById('plantsSection').scrollIntoView({behavior:'smooth'})">
                     Explore Plants
                 </button>
 
@@ -457,9 +438,7 @@
 
                 <h2>Why Choose GreenLeaf?</h2>
 
-                <p>
-                    Quality plants with reliable service
-                </p>
+                <p>Quality plants with reliable service</p>
 
             </div>
 
@@ -472,9 +451,7 @@
 
                     <b>Fresh Plants</b>
 
-                    <p>
-                        Healthy and carefully grown plants.
-                    </p>
+                    <p>Healthy and carefully grown plants.</p>
 
                 </div>
 
@@ -485,9 +462,7 @@
 
                     <b>Best Prices</b>
 
-                    <p>
-                        Quality plants at affordable prices.
-                    </p>
+                    <p>Quality plants at affordable prices.</p>
 
                 </div>
 
@@ -498,9 +473,7 @@
 
                     <b>Easy Ordering</b>
 
-                    <p>
-                        Simple and convenient ordering.
-                    </p>
+                    <p>Simple and convenient ordering.</p>
 
                 </div>
 
@@ -511,9 +484,7 @@
 
                     <b>Wide Collection</b>
 
-                    <p>
-                        Plants for home, office and garden.
-                    </p>
+                    <p>Plants for home, office and garden.</p>
 
                 </div>
 
@@ -528,32 +499,25 @@
 
                 <h2>🌿 Our Plants</h2>
 
-                <p>
-                    Choose the perfect plant for your space
-                </p>
+                <p>Choose the perfect plant for your space</p>
 
             </div>
 
 
             <div class="search">
 
-                <input id="search"
-                       placeholder="Search plant"
-                       onkeydown="if(event.key=='Enter')searchPlant()">
+                <input
+                    id="search"
+                    placeholder="Search plant"
+                    onkeydown="if(event.key=='Enter') searchPlant()">
 
-                <button class="g"
-                        onclick="searchPlant()">
-                    Search
-                </button>
+                <button class="g" onclick="searchPlant()">Search</button>
 
-                <button onclick="loadPlants()">
-                    Show All
-                </button>
+                <button onclick="loadPlants()">Show All</button>
 
                 <br>
 
-                <input id="cname"
-                       placeholder="Customer Name">
+                <input id="cname" placeholder="Customer Name">
 
             </div>
 
@@ -571,14 +535,9 @@
 
             <h2>Contact GreenLeaf Nursery</h2>
 
-            <p>
-                📍 Maharashtra, India |
-                📞 +91 7020927752
-            </p>
+            <p>📍 Maharashtra, India | 📞 +91 7020927752</p>
 
-            <p>
-                📧 greenleafnursery@gmail.com
-            </p>
+            <p>📧 greenleafnursery@gmail.com</p>
 
         </section>
 
@@ -593,13 +552,9 @@
 
             <h2>👨‍💼 Admin Dashboard</h2>
 
-            <p>
-                Manage plants, stock and customer orders
-            </p>
+            <p>Manage plants, stock and customer orders</p>
 
-            <button onclick="home()">
-                ← Home
-            </button>
+            <button onclick="home()">← Home</button>
 
         </div>
 
@@ -612,25 +567,15 @@
 
             <div class="admin-form">
 
-                <input id="name"
-                       placeholder="Plant Name">
+                <input id="name" placeholder="Plant Name">
 
-                <input id="price"
-                       type="number"
-                       placeholder="Price">
+                <input id="price" type="number" placeholder="Price">
 
-                <input id="qty"
-                       type="number"
-                       placeholder="Quantity">
+                <input id="qty" type="number" placeholder="Quantity">
 
-                <input id="pimg"
-                       type="file"
-                       accept="image/*">
+                <input id="pimg" type="file" accept="image/*">
 
-                <button class="g"
-                        onclick="addPlant()">
-                    Add Plant
-                </button>
+                <button class="g" onclick="addPlant()">Add Plant</button>
 
             </div>
 
@@ -673,17 +618,11 @@
 
             <div class="admin-form">
 
-                <input id="pn"
-                       placeholder="Plant Name">
+                <input id="pn" placeholder="Plant Name">
 
-                <input id="np"
-                       type="number"
-                       placeholder="New Price">
+                <input id="np" type="number" placeholder="New Price">
 
-                <button class="g"
-                        onclick="updatePrice()">
-                    Update
-                </button>
+                <button class="g" onclick="updatePrice()">Update</button>
 
             </div>
 
@@ -698,17 +637,11 @@
 
             <div class="admin-form">
 
-                <input id="qn"
-                       placeholder="Plant Name">
+                <input id="qn" placeholder="Plant Name">
 
-                <input id="nq"
-                       type="number"
-                       placeholder="New Quantity">
+                <input id="nq" type="number" placeholder="New Quantity">
 
-                <button class="g"
-                        onclick="updateQty()">
-                    Update
-                </button>
+                <button class="g" onclick="updateQty()">Update</button>
 
             </div>
 
@@ -723,13 +656,9 @@
 
             <div class="admin-form">
 
-                <input id="dn"
-                       placeholder="Plant Name">
+                <input id="dn" placeholder="Plant Name">
 
-                <button class="danger"
-                        onclick="deletePlant()">
-                    Delete
-                </button>
+                <button class="danger" onclick="deletePlant()">Delete</button>
 
             </div>
 
@@ -742,10 +671,7 @@
 
             <h3>⚠️ Low Stock</h3>
 
-            <button class="g"
-                    onclick="lowStock()">
-                Check Stock
-            </button>
+            <button class="g" onclick="lowStock()">Check Stock</button>
 
             <div id="low"></div>
 
@@ -758,10 +684,7 @@
 
             <h3>📋 Customer Orders</h3>
 
-            <button class="g"
-                    onclick="loadOrders()">
-                View Orders
-            </button>
+            <button class="g" onclick="loadOrders()">View Orders</button>
 
             <table>
 
@@ -794,34 +717,50 @@
     <script>
 
         /*
-         * IMPORTANT FIX
-         *
-         * Do NOT use:
-         * http://127.0.0.1:8000
-         *
-         * Render par frontend aur FastAPI same server par hain,
-         * isliye relative API URL use kar rahe hain.
-         */
-
-        const API = "";
+        ============================================================
+        API
+        ============================================================
+        */
 
         /*
-         * IMPORTANT FIX
-         *
-         * Old:
-         * const const $ = ...
-         *
-         * New:
-         */
+        IMPORTANT:
+        Do NOT use 127.0.0.1 here.
+
+        window.location.origin automatically becomes:
+
+        https://project-1-0zkx.onrender.com
+
+        when your website is opened on Render.
+        */
+
+        const API = window.location.origin;
+
+
+        /*
+        ============================================================
+        SHORT FUNCTION
+        ============================================================
+        */
 
         const $ = id => document.getElementById(id);
 
 
+        /*
+        ============================================================
+        VARIABLES
+        ============================================================
+        */
+
         let user = false;
+
         let selectedPlant = null;
 
 
-        /* HOME + LOGIN */
+        /*
+        ============================================================
+        HOME + LOGIN
+        ============================================================
+        */
 
         function home() {
 
@@ -833,7 +772,7 @@
 
             loadPlants();
 
-            scrollTo({
+            window.scrollTo({
                 top: 0,
                 behavior: "smooth"
             });
@@ -864,7 +803,11 @@
         }
 
 
-        /* REGISTER */
+        /*
+        ============================================================
+        CUSTOMER REGISTER
+        ============================================================
+        */
 
         function register() {
 
@@ -874,41 +817,41 @@
 
             if (!e || !p) {
 
-                return alert(
-                    "Enter email and password"
-                );
+                alert("Enter email and password");
+
+                return;
 
             }
 
+            localStorage.customer = JSON.stringify({
 
-            localStorage.customer =
-                JSON.stringify({
-                    email: e,
-                    password: p
-                });
+                email: e,
 
+                password: p
 
-            alert(
-                "Registration successful. Now login."
-            );
+            });
+
+            alert("Registration successful. Now login.");
 
         }
 
 
-        /* CUSTOMER LOGIN */
+        /*
+        ============================================================
+        CUSTOMER LOGIN
+        ============================================================
+        */
 
         function login() {
 
-            let d =
-                JSON.parse(
-                    localStorage.customer || "null"
-                );
-
+            let d = JSON.parse(
+                localStorage.customer || "null"
+            );
 
             if (
                 d &&
-                d.email == $("email").value &&
-                d.password == $("password").value
+                d.email === $("email").value &&
+                d.password === $("password").value
             ) {
 
                 user = true;
@@ -927,7 +870,11 @@
         }
 
 
-        /* ADMIN LOGIN */
+        /*
+        ============================================================
+        ADMIN LOGIN
+        ============================================================
+        */
 
         function adminLogin() {
 
@@ -935,10 +882,9 @@
 
             let password = $("ap").value;
 
-
             if (
-                email == "admin@gmail.com" &&
-                password == "admin123"
+                email === "admin@gmail.com" &&
+                password === "admin123"
             ) {
 
                 closeBoxes();
@@ -947,17 +893,14 @@
 
                 $("admin").style.display = "block";
 
-
                 loadPlants();
 
                 loadOrders();
-
 
                 window.scrollTo({
                     top: 0,
                     behavior: "smooth"
                 });
-
 
             } else {
 
@@ -969,12 +912,22 @@
         }
 
 
-        /* IMAGE */
+        /*
+        ============================================================
+        IMAGE STORAGE
+        ============================================================
+        */
 
         function imageKey(p) {
 
+            if (p && p.id != null) {
+
+                return "plant_img_" + p.id;
+
+            }
+
             return "plant_img_" +
-                (p.id ?? p.name.toLowerCase());
+                String(p.name || "").toLowerCase();
 
         }
 
@@ -988,16 +941,28 @@
         }
 
 
-        /* PLANT CARDS */
+        /*
+        ============================================================
+        PLANT CARDS
+        ============================================================
+        */
 
         function cards(list) {
 
+            if (!Array.isArray(list)) {
+
+                list = [];
+
+            }
+
+
             if (!list.length) {
 
-                $("plants").innerHTML =
-                    "<div style='text-align:center;padding:30px'>" +
-                    "<h3>No plants found 🌱</h3>" +
-                    "</div>";
+                $("plants").innerHTML = `
+                    <div style="text-align:center;padding:30px">
+                        <h3>No plants found 🌱</h3>
+                    </div>
+                `;
 
                 return;
 
@@ -1008,45 +973,63 @@
 
                 let img = getImage(p);
 
-                let low =
-                    Number(p.quantity) < 6;
+                let low = Number(p.quantity) < 6;
+
+
+                let imageHTML = img
+                    ? `
+                        <img
+                            src="${img}"
+                            alt="${escapeHTML(p.name)}"
+                        >
+                    `
+                    : `
+                        <div
+                            style="
+                                height:180px;
+                                display:grid;
+                                place-items:center;
+                                background:#e5eee3;
+                                font-size:45px
+                            "
+                        >
+                            🌱
+                        </div>
+                    `;
 
 
                 return `
 
                     <div class="card">
 
-                        ${
-                            img
-                            ?
-                            `<img src="${img}" alt="${p.name}">`
-                            :
-                            `<div style="
-                                height:180px;
-                                display:grid;
-                                place-items:center;
-                                background:#e5eee3;
-                                font-size:45px
-                            ">🌱</div>`
-                        }
-
+                        ${imageHTML}
 
                         <div class="card-content">
 
-                            <h3>🌿 ${p.name}</h3>
+                            <h3>
+                                🌿 ${escapeHTML(p.name)}
+                            </h3>
 
                             <p class="price">
                                 Price: ₹${p.price}
                             </p>
 
                             <p class="${low ? "low" : "stock"}">
-                                Available: ${p.quantity}
-                                ${low ? " ⚠️ Low Stock" : ""}
+
+                                Available:
+                                ${p.quantity}
+
+                                ${low
+                                    ? " ⚠️ Low Stock"
+                                    : ""
+                                }
+
                             </p>
 
                             <button
                                 class="g"
-                                onclick='openOrder(${JSON.stringify(p)})'>
+                                onclick='openOrder(${JSON.stringify(p).replace(/'/g, "&#39;")})'
+                            >
                                 🛒 Order Now
                             </button>
 
@@ -1061,134 +1044,178 @@
         }
 
 
-        /* LOAD PLANTS */
+        /*
+        ============================================================
+        SIMPLE HTML ESCAPE
+        ============================================================
+        */
+
+        function escapeHTML(value) {
+
+            return String(value ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+        /*
+        ============================================================
+        LOAD PLANTS
+        ============================================================
+        */
 
         async function loadPlants() {
 
             try {
 
-                let r =
-                    await fetch(API + "/plants");
+                $("plants").innerHTML =
+                    "<p>Loading plants...</p>";
+
+
+                let r = await fetch(
+                    API + "/plants"
+                );
 
 
                 if (!r.ok) {
 
                     throw new Error(
-                        "Plants API failed"
+                        "Plants API failed: " + r.status
                     );
 
                 }
 
 
-                let p =
-                    await r.json();
+                let p = await r.json();
+
+
+                console.log("Plants loaded:", p);
 
 
                 cards(p);
 
 
-                $("table").innerHTML =
-                    p.length
+                if ($("table")) {
 
-                    ?
+                    $("table").innerHTML =
+                        p.length
 
-                    p.map(x => `
+                            ? p.map(x => `
 
-                        <tr>
+                                <tr>
 
-                            <td>
-                                ${x.id ?? "-"}
-                            </td>
+                                    <td>
+                                        ${x.id ?? "-"}
+                                    </td>
 
-                            <td>
-                                ${x.name}
-                            </td>
+                                    <td>
+                                        ${escapeHTML(x.name)}
+                                    </td>
 
-                            <td>
-                                ₹${x.price}
-                            </td>
+                                    <td>
+                                        ₹${x.price}
+                                    </td>
 
-                            <td>
-                                ${x.quantity}
-                            </td>
+                                    <td>
+                                        ${x.quantity}
+                                    </td>
 
-                        </tr>
+                                </tr>
 
-                    `).join("")
+                            `).join("")
 
-                    :
+                            : `
+                                <tr>
+                                    <td colspan="4">
+                                        No plants available.
+                                    </td>
+                                </tr>
+                            `;
 
-                    `
-                    <tr>
-                        <td colspan="4">
-                            No plants available.
-                        </td>
-                    </tr>
-                    `;
-
+                }
 
             } catch (e) {
 
                 console.error(
-                    "loadPlants error:",
+                    "LOAD PLANTS ERROR:",
                     e
                 );
 
 
-                $("plants").innerHTML =
-                    `
+                $("plants").innerHTML = `
+
                     <div style="
                         text-align:center;
                         padding:30px
                     ">
+
                         <h3>
-                            Unable to load plants 🌱
+                            Unable to load plants ❌
                         </h3>
 
                         <p>
                             Please refresh the page.
                         </p>
+
                     </div>
-                    `;
+
+                `;
 
 
-                $("table").innerHTML =
-                    `
-                    <tr>
-                        <td colspan="4">
-                            Unable to load inventory.
-                        </td>
-                    </tr>
+                if ($("table")) {
+
+                    $("table").innerHTML = `
+
+                        <tr>
+
+                            <td colspan="4">
+
+                                Unable to load inventory.
+
+                            </td>
+
+                        </tr>
+
                     `;
+
+                }
 
             }
 
         }
 
 
-        /* SEARCH */
+        /*
+        ============================================================
+        SEARCH
+        ============================================================
+        */
 
         async function searchPlant() {
 
-            let n =
-                $("search").value.trim();
+            let n = $("search").value.trim();
 
 
             if (!n) {
 
-                return loadPlants();
+                loadPlants();
+
+                return;
 
             }
 
 
             try {
 
-                let r =
-                    await fetch(
-                        API +
-                        "/search/" +
-                        encodeURIComponent(n)
-                    );
+                let r = await fetch(
+                    API +
+                    "/search/" +
+                    encodeURIComponent(n)
+                );
 
 
                 if (!r.ok) {
@@ -1200,35 +1227,36 @@
                 }
 
 
-                let data =
-                    await r.json();
+                let data = await r.json();
 
 
                 cards(data);
 
-
             } catch (e) {
 
-                console.error(e);
-
-                alert(
-                    "Search failed"
+                console.error(
+                    "SEARCH ERROR:",
+                    e
                 );
+
+                alert("Search failed");
 
             }
 
         }
 
 
-        /* ORDER */
+        /*
+        ============================================================
+        ORDER
+        ============================================================
+        */
 
         function openOrder(p) {
 
             if (!user) {
 
-                alert(
-                    "Please login first"
-                );
+                alert("Please login first");
 
                 customerLogin();
 
@@ -1254,8 +1282,7 @@
             updateOrderTotal();
 
 
-            $("paymentMessage").innerText =
-                "";
+            $("paymentMessage").innerText = "";
 
 
             $("paymentBox").style.display =
@@ -1284,22 +1311,26 @@
 
             $("orderTotal").innerText =
                 selectedPlant
-                ?
-                selectedPlant.price *
-                Number(
-                    $("orderQty").value || 0
-                )
-                :
-                0;
+                    ? Number(selectedPlant.price) *
+                      Number($("orderQty").value || 0)
+                    : 0;
 
         }
 
 
-        /* CONFIRM ORDER */
+        /*
+        ============================================================
+        CONFIRM ORDER
+        ============================================================
+        */
 
         async function confirmOrder() {
 
-            if (!selectedPlant) return;
+            if (!selectedPlant) {
+
+                return;
+
+            }
 
 
             let customer =
@@ -1307,31 +1338,35 @@
 
 
             let q =
-                Number(
-                    $("orderQty").value
+                Number($("orderQty").value);
+
+
+            let paymentElement =
+                document.querySelector(
+                    "input[name=payment]:checked"
                 );
 
 
             let payment =
-                document.querySelector(
-                    "input[name=payment]:checked"
-                ).value;
+                paymentElement
+                    ? paymentElement.value
+                    : "Cash on Delivery";
 
 
             if (!customer) {
 
-                return alert(
-                    "Enter customer name"
-                );
+                alert("Enter customer name");
+
+                return;
 
             }
 
 
             if (!q || q < 1) {
 
-                return alert(
-                    "Enter valid quantity"
-                );
+                alert("Enter valid quantity");
+
+                return;
 
             }
 
@@ -1341,44 +1376,48 @@
                 Number(selectedPlant.quantity)
             ) {
 
-                return alert(
+                alert(
                     "Not enough stock available"
                 );
+
+                return;
 
             }
 
 
             let total =
-                selectedPlant.price * q;
+                Number(selectedPlant.price) * q;
 
 
             try {
 
-                let r =
-                    await fetch(
-                        API +
-                        "/orders?customer_name=" +
-                        encodeURIComponent(customer) +
-                        "&plant_name=" +
-                        encodeURIComponent(selectedPlant.name) +
-                        "&quantity=" +
-                        q +
-                        "&total_price=" +
-                        total,
-                        {
-                            method: "POST"
-                        }
-                    );
+                let url =
+                    API +
+                    "/orders?customer_name=" +
+                    encodeURIComponent(customer) +
+                    "&plant_name=" +
+                    encodeURIComponent(selectedPlant.name) +
+                    "&quantity=" +
+                    q +
+                    "&total_price=" +
+                    total;
 
 
-                let d =
-                    await r.json();
+                let r = await fetch(
+                    url,
+                    {
+                        method: "POST"
+                    }
+                );
+
+
+                let d = await r.json();
 
 
                 if (!r.ok) {
 
                     throw new Error(
-                        "Order failed"
+                        d.detail || "Order failed"
                     );
 
                 }
@@ -1407,7 +1446,10 @@
 
             } catch (e) {
 
-                console.error(e);
+                console.error(
+                    "ORDER ERROR:",
+                    e
+                );
 
                 alert(
                     "Order failed. Please try again."
@@ -1418,7 +1460,11 @@
         }
 
 
-        /* IMAGE UPLOAD */
+        /*
+        ============================================================
+        IMAGE PREVIEW
+        ============================================================
+        */
 
         $("pimg").addEventListener(
             "change",
@@ -1428,31 +1474,43 @@
                     $("pimg").files[0];
 
 
-                if (!f) return;
+                if (!f) {
+
+                    $("preview").style.display =
+                        "none";
+
+                    return;
+
+                }
 
 
-                let r =
+                let reader =
                     new FileReader();
 
 
-                r.onload = () => {
+                reader.onload =
+                    () => {
 
-                    $("preview").src =
-                        r.result;
+                        $("preview").src =
+                            reader.result;
 
-                    $("preview").style.display =
-                        "inline-block";
+                        $("preview").style.display =
+                            "inline-block";
 
-                };
+                    };
 
 
-                r.readAsDataURL(f);
+                reader.readAsDataURL(f);
 
             }
         );
 
 
-        /* ADD PLANT */
+        /*
+        ============================================================
+        ADD PLANT
+        ============================================================
+        */
 
         async function addPlant() {
 
@@ -1461,126 +1519,145 @@
 
 
             let p =
-                Number(
-                    $("price").value
-                );
+                Number($("price").value);
 
 
             let q =
-                Number(
-                    $("qty").value
-                );
+                Number($("qty").value);
 
 
             let f =
                 $("pimg").files[0];
 
 
-            if (!n || !p || !q) {
+            if (!n || p <= 0 || q <= 0) {
 
-                return alert(
+                alert(
                     "Enter all plant details"
                 );
+
+                return;
 
             }
 
 
             try {
 
-                let r =
-                    await fetch(
-                        API + "/plants",
-                        {
-                            method: "POST",
+                /*
+                FIRST:
+                Save plant to Supabase through API
+                */
 
-                            headers: {
-                                "Content-Type":
-                                    "application/json"
-                            },
+                let r = await fetch(
+                    API + "/plants",
+                    {
+                        method: "POST",
 
-                            body:
-                                JSON.stringify({
-                                    name: n,
-                                    price: p,
-                                    quantity: q
-                                })
-                        }
-                    );
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+
+                            name: n,
+
+                            price: p,
+
+                            quantity: q
+
+                        })
+
+                    }
+                );
 
 
-                let d =
-                    await r.json();
+                let d = await r.json();
 
 
                 if (!r.ok) {
 
                     throw new Error(
-                        "Add plant failed"
+                        d.detail ||
+                        d.message ||
+                        "Plant add failed"
                     );
 
                 }
 
 
-                if (f) {
+                /*
+                SECOND:
+                Get latest plant list
+                */
+
+                let psResponse =
+                    await fetch(
+                        API + "/plants"
+                    );
+
+
+                if (!psResponse.ok) {
+
+                    throw new Error(
+                        "Unable to reload plants"
+                    );
+
+                }
+
+
+                let ps =
+                    await psResponse.json();
+
+
+                /*
+                Find the newly added plant.
+
+                We select the latest matching plant.
+                */
+
+                let same =
+                    ps.filter(
+                        x =>
+                            String(x.name)
+                                .toLowerCase() ===
+                            n.toLowerCase()
+                    );
+
+
+                let newPlant =
+                    same.length
+                        ? same[same.length - 1]
+                        : null;
+
+
+                /*
+                THIRD:
+                Save uploaded image locally
+                using the actual Supabase plant ID.
+                */
+
+                if (f && newPlant) {
 
                     let reader =
                         new FileReader();
 
 
                     reader.onload =
-                        async () => {
+                        () => {
 
-                            try {
-
-                                let ps =
-                                    await (
-                                        await fetch(
-                                            API +
-                                            "/plants"
-                                        )
-                                    ).json();
+                            localStorage.setItem(
+                                imageKey(newPlant),
+                                reader.result
+                            );
 
 
-                                let same =
-                                    ps.filter(
-                                        x =>
-                                            x.name
-                                                .toLowerCase()
-                                            ==
-                                            n.toLowerCase()
-                                    );
-
-
-                                let x =
-                                    same[
-                                        same.length - 1
-                                    ];
-
-
-                                if (x) {
-
-                                    localStorage.setItem(
-                                        imageKey(x),
-                                        reader.result
-                                    );
-
-                                }
-
-
-                                loadPlants();
-
-
-                            } catch (err) {
-
-                                console.error(err);
-
-                            }
+                            loadPlants();
 
                         };
 
 
                     reader.readAsDataURL(f);
-
 
                 } else {
 
@@ -1589,11 +1666,9 @@
                 }
 
 
-                alert(
-                    d.message ||
-                    "Plant Added Successfully"
-                );
-
+                /*
+                Clear form
+                */
 
                 $("name").value = "";
 
@@ -1603,16 +1678,29 @@
 
                 $("pimg").value = "";
 
+                $("preview").src = "";
+
                 $("preview").style.display =
                     "none";
 
 
+                alert(
+                    d.message ||
+                    "Plant Added Successfully"
+                );
+
+
             } catch (e) {
 
-                console.error(e);
+                console.error(
+                    "ADD PLANT ERROR:",
+                    e
+                );
+
 
                 alert(
-                    "Plant add failed"
+                    "Plant add failed: " +
+                    e.message
                 );
 
             }
@@ -1620,7 +1708,11 @@
         }
 
 
-        /* UPDATE PRICE */
+        /*
+        ============================================================
+        UPDATE PRICE
+        ============================================================
+        */
 
         async function updatePrice() {
 
@@ -1632,11 +1724,13 @@
                 $("np").value;
 
 
-            if (!n || !p) {
+            if (!n || p === "") {
 
-                return alert(
+                alert(
                     "Enter plant name and price"
                 );
+
+                return;
 
             }
 
@@ -1649,7 +1743,8 @@
                         "/plants/" +
                         encodeURIComponent(n) +
                         "?new_price=" +
-                        p,
+                        encodeURIComponent(p),
+
                         {
                             method: "PUT"
                         }
@@ -1663,6 +1758,8 @@
                 if (!r.ok) {
 
                     throw new Error(
+                        d.detail ||
+                        d.message ||
                         "Update failed"
                     );
 
@@ -1675,15 +1772,24 @@
                 );
 
 
+                $("pn").value = "";
+
+                $("np").value = "";
+
+
                 loadPlants();
 
 
             } catch (e) {
 
-                console.error(e);
+                console.error(
+                    "UPDATE PRICE ERROR:",
+                    e
+                );
 
                 alert(
-                    "Update failed"
+                    "Update failed: " +
+                    e.message
                 );
 
             }
@@ -1691,7 +1797,11 @@
         }
 
 
-        /* UPDATE QUANTITY */
+        /*
+        ============================================================
+        UPDATE QUANTITY
+        ============================================================
+        */
 
         async function updateQty() {
 
@@ -1705,9 +1815,11 @@
 
             if (!n || q === "") {
 
-                return alert(
+                alert(
                     "Enter plant name and quantity"
                 );
+
+                return;
 
             }
 
@@ -1720,7 +1832,8 @@
                         "/plants/quantity/" +
                         encodeURIComponent(n) +
                         "?new_quantity=" +
-                        q,
+                        encodeURIComponent(q),
+
                         {
                             method: "PUT"
                         }
@@ -1734,6 +1847,8 @@
                 if (!r.ok) {
 
                     throw new Error(
+                        d.detail ||
+                        d.message ||
                         "Update failed"
                     );
 
@@ -1746,15 +1861,24 @@
                 );
 
 
+                $("qn").value = "";
+
+                $("nq").value = "";
+
+
                 loadPlants();
 
 
             } catch (e) {
 
-                console.error(e);
+                console.error(
+                    "UPDATE QUANTITY ERROR:",
+                    e
+                );
 
                 alert(
-                    "Update failed"
+                    "Update failed: " +
+                    e.message
                 );
 
             }
@@ -1762,7 +1886,11 @@
         }
 
 
-        /* DELETE */
+        /*
+        ============================================================
+        DELETE PLANT
+        ============================================================
+        */
 
         async function deletePlant() {
 
@@ -1772,9 +1900,11 @@
 
             if (!n) {
 
-                return alert(
+                alert(
                     "Enter plant name"
                 );
+
+                return;
 
             }
 
@@ -1792,11 +1922,32 @@
 
             try {
 
+                /*
+                Get plant first so we know ID
+                */
+
+                let searchResponse =
+                    await fetch(
+                        API +
+                        "/search/" +
+                        encodeURIComponent(n)
+                    );
+
+
+                let searchData =
+                    await searchResponse.json();
+
+
+                /*
+                Delete from backend
+                */
+
                 let r =
                     await fetch(
                         API +
                         "/plants/" +
                         encodeURIComponent(n),
+
                         {
                             method: "DELETE"
                         }
@@ -1810,11 +1961,39 @@
                 if (!r.ok) {
 
                     throw new Error(
+                        d.detail ||
+                        d.message ||
                         "Delete failed"
                     );
 
                 }
 
+
+                /*
+                Remove image using ID
+                */
+
+                if (
+                    Array.isArray(searchData)
+                ) {
+
+                    searchData.forEach(
+                        x => {
+
+                            localStorage.removeItem(
+                                imageKey(x)
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                /*
+                Also remove old name-based
+                image key for compatibility.
+                */
 
                 localStorage.removeItem(
                     "plant_img_" +
@@ -1828,15 +2007,22 @@
                 );
 
 
+                $("dn").value = "";
+
+
                 loadPlants();
 
 
             } catch (e) {
 
-                console.error(e);
+                console.error(
+                    "DELETE ERROR:",
+                    e
+                );
 
                 alert(
-                    "Delete failed"
+                    "Delete failed: " +
+                    e.message
                 );
 
             }
@@ -1844,7 +2030,11 @@
         }
 
 
-        /* LOW STOCK */
+        /*
+        ============================================================
+        LOW STOCK
+        ============================================================
+        */
 
         async function lowStock() {
 
@@ -1852,15 +2042,14 @@
 
                 let r =
                     await fetch(
-                        API +
-                        "/low-stock"
+                        API + "/low-stock"
                     );
 
 
                 if (!r.ok) {
 
                     throw new Error(
-                        "Low stock failed"
+                        "Low stock request failed"
                     );
 
                 }
@@ -1873,41 +2062,47 @@
                 $("low").innerHTML =
                     p.length
 
-                    ?
+                        ? p.map(
+                            x =>
+                                `
+                                <p>
+                                    ⚠️
+                                    ${escapeHTML(x.name)}
+                                    —
+                                    Stock:
+                                    ${x.quantity}
+                                </p>
+                                `
+                          ).join("")
 
-                    p.map(x => `
-                        <p>
-                            ⚠️ ${x.name}
-                            — Stock: ${x.quantity}
-                        </p>
-                    `).join("")
-
-                    :
-
-                    `
-                    <p>
-                        All plants have sufficient stock. ✅
-                    </p>
-                    `;
+                        : `
+                            <p>
+                                All plants have sufficient stock. ✅
+                            </p>
+                        `;
 
 
             } catch (e) {
 
-                console.error(e);
+                console.error(
+                    "LOW STOCK ERROR:",
+                    e
+                );
+
 
                 $("low").innerHTML =
-                    `
-                    <p>
-                        Unable to check stock.
-                    </p>
-                    `;
+                    "<p>Unable to check stock.</p>";
 
             }
 
         }
 
 
-        /* ORDERS */
+        /*
+        ============================================================
+        ORDERS
+        ============================================================
+        */
 
         async function loadOrders() {
 
@@ -1915,15 +2110,14 @@
 
                 let r =
                     await fetch(
-                        API +
-                        "/orders"
+                        API + "/orders"
                     );
 
 
                 if (!r.ok) {
 
                     throw new Error(
-                        "Orders failed"
+                        "Orders request failed"
                     );
 
                 }
@@ -1936,66 +2130,85 @@
                 $("orders").innerHTML =
                     o.length
 
-                    ?
+                        ? o.map(
+                            x =>
+                                `
+                                <tr>
 
-                    o.map(x => `
+                                    <td>
+                                        ${escapeHTML(
+                                            x.customer_name
+                                        )}
+                                    </td>
 
-                        <tr>
+                                    <td>
+                                        ${escapeHTML(
+                                            x.plant_name
+                                        )}
+                                    </td>
 
-                            <td>
-                                ${x.customer_name}
-                            </td>
+                                    <td>
+                                        ${x.quantity}
+                                    </td>
 
-                            <td>
-                                ${x.plant_name}
-                            </td>
+                                    <td>
+                                        ₹${x.total_price}
+                                    </td>
 
-                            <td>
-                                ${x.quantity}
-                            </td>
+                                    <td>
+                                        ${
+                                            escapeHTML(
+                                                x.status ||
+                                                "Placed"
+                                            )
+                                        }
+                                    </td>
 
-                            <td>
-                                ₹${x.total_price}
-                            </td>
+                                </tr>
+                                `
+                          ).join("")
 
-                            <td>
-                                ${x.status || "Placed"}
-                            </td>
+                        : `
+                            <tr>
 
-                        </tr>
+                                <td colspan="5">
+                                    No orders found.
+                                </td>
 
-                    `).join("")
-
-                    :
-
-                    `
-                    <tr>
-                        <td colspan="5">
-                            No orders found.
-                        </td>
-                    </tr>
-                    `;
+                            </tr>
+                        `;
 
 
             } catch (e) {
 
-                console.error(e);
+                console.error(
+                    "ORDERS ERROR:",
+                    e
+                );
 
-                $("orders").innerHTML =
-                    `
+
+                $("orders").innerHTML = `
+
                     <tr>
+
                         <td colspan="5">
                             Unable to load orders.
                         </td>
+
                     </tr>
-                    `;
+
+                `;
 
             }
 
         }
 
 
-        /* PAGE LOAD */
+        /*
+        ============================================================
+        PAGE LOAD
+        ============================================================
+        */
 
         window.addEventListener(
             "DOMContentLoaded",
