@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile, File, Form
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from models import Plant
@@ -14,94 +14,49 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-
 @app.get("/")
 def home():
     return FileResponse("index.html")
-
 
 @app.get("/plants")
 def get_plants():
     return supabase.table("plants").select("*").execute().data
 
-
 @app.post("/plants")
-async def add_plant(
-    name: str = Form(...),
-    price: int = Form(...),
-    quantity: int = Form(...),
-    image: UploadFile = File(None)
-):
-    result = supabase.table("plants").insert({
-        "name": name,
-        "price": price,
-        "quantity": quantity
+def add_plant(plant: Plant):
+    supabase.table("plants").insert({
+        "name": plant.name,
+        "price": plant.price,
+        "quantity": plant.quantity
     }).execute()
-
-    plant = result.data[0]
-
-    if image:
-        content = await image.read()
-
-        filename = f"plant_{plant['id']}_{image.filename}"
-
-        supabase.storage.from_("plant-images").upload(
-            filename,
-            content,
-            {"content-type": image.content_type}
-        )
-
-        image_url = supabase.storage.from_(
-            "plant-images"
-        ).get_public_url(filename)
-
-        supabase.table("plants").update({
-            "image_url": image_url
-        }).eq("id", plant["id"]).execute()
-
     return {"message": "Plant Added Successfully"}
-
 
 @app.get("/low-stock")
 def low_stock():
-    return supabase.table("plants").select("*").lt(
-        "quantity", 6
-    ).execute().data
-
+    return supabase.table("plants").select("*").lt("quantity", 6).execute().data
 
 @app.delete("/plants/{plant_name}")
 def delete_plant(plant_name: str):
-    supabase.table("plants").delete().eq(
-        "name", plant_name
-    ).execute()
-
+    supabase.table("plants").delete().eq("name", plant_name).execute()
     return {"message": "Plant Deleted Successfully"}
-
 
 @app.put("/plants/{plant_name}")
 def update_price(plant_name: str, new_price: int):
     supabase.table("plants").update({
         "price": new_price
     }).eq("name", plant_name).execute()
-
     return {"message": "Price Updated Successfully"}
-
 
 @app.put("/plants/quantity/{plant_name}")
 def update_quantity(plant_name: str, new_quantity: int):
     supabase.table("plants").update({
         "quantity": new_quantity
     }).eq("name", plant_name).execute()
-
     return {"message": "Quantity Updated Successfully"}
-
 
 @app.get("/search/{name}")
 def search(name: str):
-    return supabase.table("plants").select("*").eq(
-        "name", name
-    ).execute().data
-
+    return supabase.table("plants").select("*").eq("name", name).execute().data
 
 @app.post("/orders")
 def create_order(
@@ -116,12 +71,8 @@ def create_order(
         "quantity": quantity,
         "total_price": total_price
     }).execute()
-
     return {"message": "Order Placed Successfully"}
-
 
 @app.get("/orders")
 def get_orders():
-    return supabase.table("orders").select(
-        "*"
-    ).execute().data
+    return supabase.table("orders").select("*").execute().data
