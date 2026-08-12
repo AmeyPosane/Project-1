@@ -1,220 +1,451 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
 <head>
-    <title>GreenLeaf Nursery</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GreenLeaf Plant Nursery</title>
 
     <style>
         * {
-            box-sizing: border-box
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
-            font: 16px Arial;
+            font-family: Arial, sans-serif;
             color: #26352a;
-            background: #f5f8f4
+            background: #f5f8f4;
         }
 
+        /* ================= NAVBAR ================= */
+
         nav {
-            height: 70px;
-            background: #fff;
-            padding: 0 7%;
+            min-height: 70px;
+            background: white;
+            padding: 10px 6%;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 15px;
             box-shadow: 0 2px 8px #ddd;
             position: sticky;
             top: 0;
-            z-index: 5
+            z-index: 100;
         }
 
         nav h2 {
             color: #287642;
-            margin: 0
+            margin: 0;
+            font-size: 22px;
+        }
+
+        nav .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         button {
             padding: 10px 16px;
             border: 0;
-            border-radius: 6px;
+            border-radius: 7px;
             cursor: pointer;
-            margin: 3px
+            margin: 3px;
+            font-size: 14px;
+        }
+
+        button:hover {
+            opacity: 0.88;
         }
 
         .g {
             background: #287642;
-            color: #fff
+            color: white;
         }
 
-        input {
+        .danger {
+            background: #b3261e;
+            color: white;
+        }
+
+        input,
+        select {
             padding: 11px;
             margin: 5px;
             border: 1px solid #ccc;
-            border-radius: 6px
+            border-radius: 7px;
+            font-size: 14px;
+            max-width: 100%;
         }
 
+        /* ================= HERO ================= */
+
         .hero {
-            height: 410px;
-            background: linear-gradient(#16452299, #16452299),
-                url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1500&q=80") center/cover;
+            min-height: 430px;
+
+            background:
+                linear-gradient(#16452299, #16452299),
+                url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1500&q=80")
+                center/cover;
+
             display: grid;
             place-items: center;
             text-align: center;
-            color: #fff
+            color: white;
+            padding: 30px 20px;
         }
 
         .hero h1 {
-            font-size: 48px;
-            margin: 10px
+            font-size: 50px;
+            margin: 10px;
         }
 
         .hero p {
-            font-size: 19px
+            font-size: 19px;
         }
 
+        /* ================= SECTION ================= */
+
         section {
-            max-width: 1100px;
+            max-width: 1150px;
             margin: auto;
-            padding: 45px 20px
+            padding: 50px 20px;
         }
 
         .title {
-            text-align: center
+            text-align: center;
         }
 
         .title h2 {
-            color: #287642
+            color: #287642;
         }
+
+        /* ================= FEATURES ================= */
 
         .features {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px
+            gap: 20px;
+            margin-top: 25px;
         }
 
         .feature,
         .card,
         .box,
         .login {
-            background: #fff;
+            background: white;
             border-radius: 12px;
-            box-shadow: 0 2px 10px #ddd
+            box-shadow: 0 2px 10px #ddd;
         }
 
         .feature {
             text-align: center;
-            padding: 25px
+            padding: 25px;
         }
 
         .icon {
-            font-size: 32px
+            font-size: 32px;
         }
 
+        /* ================= PLANTS ================= */
+
         #plants {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 22px
+            display: grid;
+            grid-template-columns: repeat(3, minmax(230px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
 
         .search {
             text-align: center;
-            margin: 25px
+            margin: 25px auto;
+        }
+
+        .search input {
+            width: 220px;
         }
 
         .card {
-            width: 230px;
-            overflow: hidden
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
         }
 
         .card img {
             width: 100%;
-            height: 155px;
-            object-fit: cover
+            height: 190px;
+            object-fit: cover;
+            display: block;
+            background: #e5eee3;
         }
 
-        .card div {
-            padding: 15px
+        .card-content {
+            padding: 18px;
         }
 
         .card h3 {
-            color: #287642
+            color: #287642;
+            margin-top: 0;
         }
 
-        .admin {
-            display: none
+        .price {
+            font-weight: bold;
+            color: #333;
         }
 
-        .box {
-            padding: 22px;
-            margin: 18px 0
+        .stock {
+            color: #555;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse
+        .low-stock-text {
+            color: #b3261e;
+            font-weight: bold;
         }
 
-        td,
-        th {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: center
-        }
-
-        th {
-            background: #dcebd9
-        }
+        /* ================= CONTACT ================= */
 
         .contact {
             max-width: none;
             text-align: center;
-            background: #e5f0e1
+            background: #e5f0e1;
         }
+
+        /* ================= FOOTER ================= */
 
         footer {
             text-align: center;
             background: #1e5130;
-            color: #fff;
-            padding: 20px
+            color: white;
+            padding: 22px;
         }
+
+        /* ================= MODAL ================= */
 
         .modal {
             display: none;
             position: fixed;
             inset: 0;
             background: #0008;
-            z-index: 20;
-            place-items: center
+            z-index: 500;
+            place-items: center;
+            padding: 20px;
         }
 
         .login {
-            width: 360px;
+            width: 380px;
+            max-width: 100%;
             padding: 30px;
-            text-align: center
+            text-align: center;
         }
 
-        .login input {
-            width: 90%
+        .login input,
+        .login select {
+            width: 90%;
         }
 
-        @media(max-width:700px) {
-            .features {
-                grid-template-columns: 1fr 1fr
-            }
+        /* ================= ADMIN ================= */
 
-            .hero h1 {
-                font-size: 34px
-            }
+        .admin {
+            display: none;
+        }
+
+        .box {
+            padding: 22px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .admin-form {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 550px;
+        }
+
+        td,
+        th {
+            border: 1px solid #ccc;
+            padding: 11px;
+            text-align: center;
+        }
+
+        th {
+            background: #dcebd9;
+        }
+
+        #preview {
+            display: none;
+            width: 130px;
+            height: 95px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 8px;
+        }
+
+        /* ================= PAYMENT ================= */
+
+        .payment-box {
+            text-align: left;
+            margin: 15px 0;
+            padding: 15px;
+            background: #f5f8f4;
+            border-radius: 8px;
+        }
+
+        .payment-option {
+            display: block;
+            padding: 10px;
+            margin: 5px 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .payment-option input {
+            width: auto;
+            margin-right: 8px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 850px) {
 
             nav {
-                padding: 0 3%
+                flex-direction: column;
+                padding: 12px;
             }
 
             nav h2 {
-                font-size: 18px
+                font-size: 20px;
+                text-align: center;
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            #plants {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 15px;
+            }
+
+            .card img {
+                height: 160px;
+            }
+
+            .hero {
+                min-height: 350px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            body {
+                font-size: 14px;
+            }
+
+            nav {
+                position: relative;
+            }
+
+            nav .nav-buttons {
+                width: 100%;
+            }
+
+            nav button {
+                font-size: 12px;
+                padding: 9px 10px;
+            }
+
+            .hero {
+                min-height: 320px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 35px 12px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            #plants {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .card img {
+                height: 135px;
+            }
+
+            .card-content {
+                padding: 12px;
+            }
+
+            .card h3 {
+                font-size: 16px;
+            }
+
+            .card p {
+                font-size: 13px;
+            }
+
+            .card button {
+                width: 100%;
+                padding: 9px 5px;
+                font-size: 12px;
+            }
+
+            .search input {
+                width: 85%;
+            }
+
+            .search button {
+                padding: 9px 12px;
+            }
+
+            .admin-form {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .admin-form input,
+            .admin-form button {
+                width: 100%;
+                margin: 4px 0;
+            }
+
+            .login {
+                padding: 20px;
             }
         }
     </style>
@@ -222,248 +453,659 @@
 
 <body>
 
+    <!-- ================= NAVBAR ================= -->
+
     <nav>
+
         <h2>🌿 GreenLeaf Nursery</h2>
 
-        <div>
-            <button onclick="home()">Home</button>
-            <button class="g" onclick="customerLogin()">Customer Login</button>
-            <button onclick="openAdmin()">Admin</button>
+        <div class="nav-buttons">
+
+            <button onclick="home()">
+                Home
+            </button>
+
+            <button class="g" onclick="customerLogin()">
+                Customer Login
+            </button>
+
+            <button onclick="openAdmin()">
+                Admin
+            </button>
+
         </div>
+
     </nav>
 
+
+    <!-- ================= CUSTOMER LOGIN ================= -->
+
     <div id="customerBox" class="modal">
+
         <div class="login">
+
             <h2>🌿 Customer Login</h2>
 
-            <input id="email" placeholder="Email"><br>
-            <input id="password" type="password" placeholder="Password"><br><br>
+            <input id="email" placeholder="Email">
 
-            <button class="g" onclick="login()">Login</button>
-            <button onclick="register()">Register</button>
+            <input
+                id="password"
+                type="password"
+                placeholder="Password"
+            >
 
-            <br><br>
+            <br>
 
-            <button onclick="closeBoxes()">Cancel</button>
+            <button class="g" onclick="login()">
+                Login
+            </button>
+
+            <button onclick="register()">
+                Register
+            </button>
+
+            <br>
+
+            <button onclick="closeBoxes()">
+                Cancel
+            </button>
 
             <p id="msg"></p>
+
         </div>
+
     </div>
+
+
+    <!-- ================= ADMIN LOGIN ================= -->
 
     <div id="adminBox" class="modal">
+
         <div class="login">
+
             <h2>👨‍💼 Admin Login</h2>
 
-            <input id="ae" placeholder="Admin Email"><br>
-            <input id="ap" type="password" placeholder="Password"><br><br>
+            <input
+                id="ae"
+                placeholder="Admin Email"
+            >
 
-            <button class="g" onclick="adminLogin()">Login</button>
-            <button onclick="closeBoxes()">Cancel</button>
+            <input
+                id="ap"
+                type="password"
+                placeholder="Password"
+            >
+
+            <br>
+
+            <button class="g" onclick="adminLogin()">
+                Login
+            </button>
+
+            <button onclick="closeBoxes()">
+                Cancel
+            </button>
 
             <p id="amsg"></p>
+
         </div>
+
     </div>
+
+
+    <!-- ================= PAYMENT MODAL ================= -->
+
+    <div id="paymentBox" class="modal">
+
+        <div class="login">
+
+            <h2>🛒 Place Your Order</h2>
+
+            <p id="paymentPlant"></p>
+
+            <input
+                id="orderCustomer"
+                placeholder="Customer Name"
+            >
+
+            <input
+                id="orderQty"
+                type="number"
+                min="1"
+                placeholder="Quantity"
+            >
+
+            <div class="payment-box">
+
+                <b>💳 Select Payment Method</b>
+
+                <label class="payment-option">
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="Cash on Delivery"
+                        checked
+                    >
+                    💵 Cash on Delivery
+                </label>
+
+                <label class="payment-option">
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="UPI"
+                    >
+                    📱 UPI
+                </label>
+
+                <label class="payment-option">
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="Card"
+                    >
+                    💳 Card
+                </label>
+
+            </div>
+
+            <p>
+                <b>Total:</b>
+                ₹<span id="orderTotal">0</span>
+            </p>
+
+            <button class="g" onclick="confirmOrder()">
+                Confirm Order
+            </button>
+
+            <button onclick="closePayment()">
+                Cancel
+            </button>
+
+            <p id="paymentMessage"></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= HOME ================= -->
 
     <div id="home">
 
-        <div class="hero">
-            <div>
-                <h1>Bring Nature Home</h1>
-                <p>Fresh plants for a greener and healthier space</p>
+        <!-- HERO -->
 
-                <button class="g"
-                    onclick="document.getElementById('plantsSection').scrollIntoView({behavior:'smooth'})">
+        <div class="hero">
+
+            <div>
+
+                <h1>
+                    Bring Nature Home
+                </h1>
+
+                <p>
+                    Fresh plants for a greener and healthier space
+                </p>
+
+                <button
+                    class="g"
+                    onclick="document.getElementById('plantsSection').scrollIntoView({behavior:'smooth'})"
+                >
                     Explore Plants
                 </button>
+
             </div>
+
         </div>
+
+
+        <!-- FEATURES -->
 
         <section>
 
             <div class="title">
-                <h2>Why Choose GreenLeaf?</h2>
-                <p>Quality plants with reliable service</p>
+
+                <h2>
+                    Why Choose GreenLeaf?
+                </h2>
+
+                <p>
+                    Quality plants with reliable service
+                </p>
+
             </div>
+
 
             <div class="features">
 
                 <div class="feature">
-                    <div class="icon">🌱</div>
-                    <b>Fresh Plants</b>
-                    <p>Healthy and carefully grown plants.</p>
+
+                    <div class="icon">
+                        🌱
+                    </div>
+
+                    <b>
+                        Fresh Plants
+                    </b>
+
+                    <p>
+                        Healthy and carefully grown plants.
+                    </p>
+
                 </div>
 
-                <div class="feature">
-                    <div class="icon">💰</div>
-                    <b>Best Prices</b>
-                    <p>Quality plants at affordable prices.</p>
-                </div>
 
                 <div class="feature">
-                    <div class="icon">🛒</div>
-                    <b>Easy Ordering</b>
-                    <p>Simple and convenient ordering.</p>
+
+                    <div class="icon">
+                        💰
+                    </div>
+
+                    <b>
+                        Best Prices
+                    </b>
+
+                    <p>
+                        Quality plants at affordable prices.
+                    </p>
+
                 </div>
 
+
                 <div class="feature">
-                    <div class="icon">🌿</div>
-                    <b>Wide Collection</b>
-                    <p>Plants for home, office and garden.</p>
+
+                    <div class="icon">
+                        🛒
+                    </div>
+
+                    <b>
+                        Easy Ordering
+                    </b>
+
+                    <p>
+                        Simple and convenient ordering.
+                    </p>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="icon">
+                        🌿
+                    </div>
+
+                    <b>
+                        Wide Collection
+                    </b>
+
+                    <p>
+                        Plants for home, office and garden.
+                    </p>
+
                 </div>
 
             </div>
 
         </section>
+
+
+        <!-- PLANTS -->
 
         <section id="plantsSection">
 
             <div class="title">
-                <h2>🌿 Our Plants</h2>
-                <p>Choose the perfect plant for your space</p>
+
+                <h2>
+                    🌿 Our Plants
+                </h2>
+
+                <p>
+                    Choose the perfect plant for your space
+                </p>
+
             </div>
+
 
             <div class="search">
 
-                <input id="search" placeholder="Search plant">
+                <input
+                    id="search"
+                    placeholder="Search plant"
+                    onkeydown="if(event.key==='Enter') searchPlant()"
+                >
 
-                <button class="g" onclick="searchPlant()">Search</button>
+                <button
+                    class="g"
+                    onclick="searchPlant()"
+                >
+                    Search
+                </button>
 
-                <button onclick="loadPlants()">Show All</button>
+                <button onclick="loadPlants()">
+                    Show All
+                </button>
 
                 <br>
 
-                <input id="cname" placeholder="Customer Name">
+                <input
+                    id="cname"
+                    placeholder="Customer Name"
+                >
 
             </div>
 
-            <div id="plants"></div>
+
+            <div id="plants">
+
+                <p>
+                    Loading plants...
+                </p>
+
+            </div>
 
         </section>
 
+
+        <!-- CONTACT -->
+
         <section class="contact">
 
-            <h2>Contact GreenLeaf Nursery</h2>
+            <h2>
+                Contact GreenLeaf Nursery
+            </h2>
 
-            <p>📍 Maharashtra, India &nbsp; | &nbsp; 📞 +91 7020927752</p>
+            <p>
+                📍 Maharashtra, India
+                &nbsp; | &nbsp;
+                📞 +91 7020927752
+            </p>
 
-            <p>📧 greenleafnursery@gmail.com</p>
+            <p>
+                📧 greenleafnursery@gmail.com
+            </p>
 
         </section>
 
     </div>
+
+
+    <!-- ================= ADMIN DASHBOARD ================= -->
 
     <section id="admin" class="admin">
 
         <div class="title">
 
-            <h2>👨‍💼 Admin Dashboard</h2>
+            <h2>
+                👨‍💼 Admin Dashboard
+            </h2>
 
-            <p>Manage plants, stock and customer orders</p>
+            <p>
+                Manage plants, stock and customer orders
+            </p>
 
-            <button onclick="home()">← Home</button>
-
-        </div>
-
-        <div class="box">
-
-            <h3>➕ Add Plant</h3>
-
-            <input id="name" placeholder="Plant Name">
-
-            <input id="price" type="number" placeholder="Price">
-
-            <input id="qty" type="number" placeholder="Quantity">
-
-            <input id="pimg" type="file" accept="image/*">
-
-            <br>
-
-            <img id="preview"
-                style="display:none;width:120px;height:90px;object-fit:cover;border-radius:8px;margin:8px">
-
-            <br>
-
-            <button class="g" onclick="addPlant()">Add Plant</button>
+            <button onclick="home()">
+                ← Home
+            </button>
 
         </div>
 
+
+        <!-- ADD PLANT -->
+
         <div class="box">
 
-            <h3>🌿 Plant Inventory</h3>
+            <h3>
+                ➕ Add Plant
+            </h3>
+
+            <div class="admin-form">
+
+                <input
+                    id="name"
+                    placeholder="Plant Name"
+                >
+
+                <input
+                    id="price"
+                    type="number"
+                    min="1"
+                    placeholder="Price"
+                >
+
+                <input
+                    id="qty"
+                    type="number"
+                    min="1"
+                    placeholder="Quantity"
+                >
+
+                <input
+                    id="pimg"
+                    type="file"
+                    accept="image/*"
+                >
+
+                <button
+                    class="g"
+                    onclick="addPlant()"
+                >
+                    Add Plant
+                </button>
+
+            </div>
+
+            <img id="preview">
+
+        </div>
+
+
+        <!-- INVENTORY -->
+
+        <div class="box">
+
+            <h3>
+                🌿 Plant Inventory
+            </h3>
 
             <table>
 
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                </tr>
+                <thead>
 
-                <tbody id="table"></tbody>
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            Name
+                        </th>
+
+                        <th>
+                            Price
+                        </th>
+
+                        <th>
+                            Quantity
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="table">
+
+                    <tr>
+                        <td colspan="4">
+                            Loading...
+                        </td>
+                    </tr>
+
+                </tbody>
 
             </table>
 
         </div>
 
+
+        <!-- UPDATE PRICE -->
+
         <div class="box">
 
-            <h3>💰 Update Price</h3>
+            <h3>
+                💰 Update Price
+            </h3>
 
-            <input id="pn" placeholder="Plant Name">
+            <div class="admin-form">
 
-            <input id="np" type="number" placeholder="New Price">
+                <input
+                    id="pn"
+                    placeholder="Plant Name"
+                >
 
-            <button class="g" onclick="updatePrice()">Update</button>
+                <input
+                    id="np"
+                    type="number"
+                    placeholder="New Price"
+                >
+
+                <button
+                    class="g"
+                    onclick="updatePrice()"
+                >
+                    Update
+                </button>
+
+            </div>
 
         </div>
 
+
+        <!-- UPDATE QUANTITY -->
+
         <div class="box">
 
-            <h3>📦 Update Quantity</h3>
+            <h3>
+                📦 Update Quantity
+            </h3>
 
-            <input id="qn" placeholder="Plant Name">
+            <div class="admin-form">
 
-            <input id="nq" type="number" placeholder="New Quantity">
+                <input
+                    id="qn"
+                    placeholder="Plant Name"
+                >
 
-            <button class="g" onclick="updateQty()">Update</button>
+                <input
+                    id="nq"
+                    type="number"
+                    placeholder="New Quantity"
+                >
+
+                <button
+                    class="g"
+                    onclick="updateQty()"
+                >
+                    Update
+                </button>
+
+            </div>
 
         </div>
 
+
+        <!-- DELETE -->
+
         <div class="box">
 
-            <h3>🗑️ Delete Plant</h3>
+            <h3>
+                🗑️ Delete Plant
+            </h3>
 
-            <input id="dn" placeholder="Plant Name">
+            <div class="admin-form">
 
-            <button class="g" onclick="deletePlant()">Delete</button>
+                <input
+                    id="dn"
+                    placeholder="Plant Name"
+                >
+
+                <button
+                    class="danger"
+                    onclick="deletePlant()"
+                >
+                    Delete
+                </button>
+
+            </div>
 
         </div>
 
+
+        <!-- LOW STOCK -->
+
         <div class="box">
 
-            <h3>⚠️ Low Stock</h3>
+            <h3>
+                ⚠️ Low Stock
+            </h3>
 
-            <button class="g" onclick="lowStock()">Check Stock</button>
+            <button
+                class="g"
+                onclick="lowStock()"
+            >
+                Check Stock
+            </button>
 
             <div id="low"></div>
 
         </div>
 
+
+        <!-- ORDERS -->
+
         <div class="box">
 
-            <h3>📋 Customer Orders</h3>
+            <h3>
+                📋 Customer Orders
+            </h3>
 
-            <button class="g" onclick="loadOrders()">View Orders</button>
+            <button
+                class="g"
+                onclick="loadOrders()"
+            >
+                View Orders
+            </button>
 
             <table>
 
-                <tr>
-                    <th>Customer</th>
-                    <th>Plant</th>
-                    <th>Qty</th>
-                    <th>Total</th>
-                    <th>Status</th>
-                </tr>
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Customer
+                        </th>
+
+                        <th>
+                            Plant
+                        </th>
+
+                        <th>
+                            Qty
+                        </th>
+
+                        <th>
+                            Total
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                    </tr>
+
+                </thead>
 
                 <tbody id="orders"></tbody>
 
@@ -473,31 +1115,56 @@
 
     </section>
 
+
+    <!-- ================= FOOTER ================= -->
+
     <footer>
+
         🌿 GreenLeaf Plant Nursery Management System
+
     </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
 
     <script>
 
-        /* IMPORTANT: Render par same server use hoga */
+        /*
+         * IMPORTANT:
+         * Same Render server par frontend + FastAPI hai.
+         * Isliye API empty rakha hai.
+         */
+
         const API = "";
 
-        const $ = x => document.getElementById(x);
+        const $ = id => document.getElementById(id);
 
         let user = false;
 
+        let selectedPlant = null;
+
+
+        /* ================= HOME ================= */
 
         function home() {
 
             $("home").style.display = "block";
+
             $("admin").style.display = "none";
 
             closeBoxes();
 
             loadPlants();
 
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
         }
 
+
+        /* ================= LOGIN ================= */
 
         function customerLogin() {
 
@@ -516,6 +1183,7 @@
         function closeBoxes() {
 
             $("customerBox").style.display = "none";
+
             $("adminBox").style.display = "none";
 
         }
@@ -523,30 +1191,43 @@
 
         function register() {
 
-            let e = $("email").value.trim();
-            let p = $("password").value;
+            let email = $("email").value.trim();
 
-            if (!e || !p)
-                return alert("Enter email and password");
+            let password = $("password").value;
+
+            if (!email || !password) {
+
+                alert("Enter email and password");
+
+                return;
+
+            }
 
             localStorage.customer = JSON.stringify({
-                email: e,
-                password: p
+
+                email: email,
+
+                password: password
+
             });
 
-            alert("Registration successful. Now login.");
+            alert(
+                "Registration successful. Now login."
+            );
 
         }
 
 
         function login() {
 
-            let d = JSON.parse(localStorage.customer || "null");
+            let data = JSON.parse(
+                localStorage.customer || "null"
+            );
 
             if (
-                d &&
-                d.email == $("email").value &&
-                d.password == $("password").value
+                data &&
+                data.email === $("email").value &&
+                data.password === $("password").value
             ) {
 
                 user = true;
@@ -568,16 +1249,19 @@
         function adminLogin() {
 
             if (
-                $("ae").value == "admin@gmail.com" &&
-                $("ap").value == "admin123"
+                $("ae").value === "admin@gmail.com" &&
+                $("ap").value === "admin123"
             ) {
 
                 closeBoxes();
 
                 $("home").style.display = "none";
+
                 $("admin").style.display = "block";
 
                 loadPlants();
+
+                loadOrders();
 
             } else {
 
@@ -589,41 +1273,138 @@
         }
 
 
-        function cards(p) {
+        /* ================= IMAGE SYSTEM ================= */
 
-            $("plants").innerHTML = p.map(x => {
+        function imageKey(plant) {
 
-                let saved = localStorage.getItem(
-                    "plant_img_" + x.name.toLowerCase()
+            if (plant.id !== undefined) {
+
+                return "plant_img_id_" + plant.id;
+
+            }
+
+            return "plant_img_" +
+                plant.name.toLowerCase();
+
+        }
+
+
+        function getPlantImage(plant) {
+
+            let saved =
+                localStorage.getItem(
+                    imageKey(plant)
                 );
 
-                /*
-                 * FIX:
-                 * Old code used undefined "imgs".
-                 * Now saved image is used, otherwise default image.
-                 */
+            if (saved) {
+
+                return saved;
+
+            }
+
+
+            /*
+             * Different default images for different plants.
+             * This prevents every card from looking identical.
+             */
+
+            const images = {
+
+                mango:
+                    "https://images.unsplash.com/photo-1605027990121-cbae9e0642df?auto=format&fit=crop&w=700&q=80",
+
+                rose:
+                    "https://images.unsplash.com/photo-1496062031456-07b8f162a322?auto=format&fit=crop&w=700&q=80",
+
+                tulsi:
+                    "https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?auto=format&fit=crop&w=700&q=80",
+
+                lemon:
+                    "https://images.unsplash.com/photo-1590502593747-42a996133562?auto=format&fit=crop&w=700&q=80",
+
+                neem:
+                    "https://images.unsplash.com/photo-1600189021105-6d6b2e0f3e6e?auto=format&fit=crop&w=700&q=80",
+
+                guava:
+                    "https://images.unsplash.com/photo-1536511132770-e5058c7e8c46?auto=format&fit=crop&w=700&q=80",
+
+                jamun:
+                    "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=700&q=80"
+
+            };
+
+
+            return images[
+                String(plant.name)
+                    .toLowerCase()
+                    .trim()
+            ] ||
+                "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=700&q=80";
+
+        }
+
+
+        /* ================= PLANT CARDS ================= */
+
+        function cards(plants) {
+
+            if (!plants || plants.length === 0) {
+
+                $("plants").innerHTML = `
+                    <div style="text-align:center;width:100%;padding:30px">
+                        <h3>No plants found 🌱</h3>
+                        <p>Try another plant name.</p>
+                    </div>
+                `;
+
+                return;
+
+            }
+
+
+            $("plants").innerHTML = plants.map(plant => {
 
                 let image =
-                    saved ||
-                    "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=500&q=80";
+                    getPlantImage(plant);
+
+                let low =
+                    Number(plant.quantity) < 6;
+
 
                 return `
 
                     <div class="card">
 
-                        <img src="${image}">
+                        <img
+                            src="${image}"
+                            alt="${plant.name}"
+                            onerror="this.src='https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=700&q=80'"
+                        >
 
-                        <div>
+                        <div class="card-content">
 
-                            <h3>🌿 ${x.name}</h3>
+                            <h3>
+                                🌿 ${escapeHtml(plant.name)}
+                            </h3>
 
-                            <p>Price: ₹${x.price}</p>
+                            <p class="price">
+                                Price: ₹${plant.price}
+                            </p>
 
-                            <p>Available: ${x.quantity}</p>
+                            <p class="${low ? "low-stock-text" : "stock"}">
 
-                            <button class="g"
-                                onclick="order('${x.name}',${x.price})">
-                                Order Now
+                                Available:
+                                ${plant.quantity}
+
+                                ${low ? " ⚠️ Low Stock" : ""}
+
+                            </p>
+
+                            <button
+                                class="g"
+                                onclick='openOrder(${JSON.stringify(plant)})'
+                            >
+                                🛒 Order Now
                             </button>
 
                         </div>
@@ -637,6 +1418,20 @@
         }
 
 
+        function escapeHtml(value) {
+
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+        /* ================= LOAD PLANTS ================= */
+
         async function loadPlants() {
 
             try {
@@ -645,189 +1440,602 @@
                     await fetch(API + "/plants");
 
                 if (!response.ok) {
-                    throw new Error("Plants API failed");
+
+                    throw new Error(
+                        "Plants API failed: " +
+                        response.status
+                    );
+
                 }
 
-                let p = await response.json();
+                let plants =
+                    await response.json();
 
-                cards(p);
 
-                $("table").innerHTML = p.map(x =>
-                    `<tr>
-                        <td>${x.name}</td>
-                        <td>₹${x.price}</td>
-                        <td>${x.quantity}</td>
-                    </tr>`
-                ).join("");
+                console.log(
+                    "Plants loaded:",
+                    plants
+                );
+
+
+                cards(plants);
+
+
+                $("table").innerHTML =
+                    plants.length
+                        ?
+                        plants.map(plant => `
+
+                            <tr>
+
+                                <td>
+                                    ${plant.id ?? "-"}
+                                </td>
+
+                                <td>
+                                    ${escapeHtml(plant.name)}
+                                </td>
+
+                                <td>
+                                    ₹${plant.price}
+                                </td>
+
+                                <td>
+                                    ${plant.quantity}
+                                </td>
+
+                            </tr>
+
+                        `).join("")
+
+                        :
+
+                        `
+                            <tr>
+                                <td colspan="4">
+                                    No plants available.
+                                </td>
+                            </tr>
+                        `;
+
 
             } catch (error) {
 
-                console.error("Load Plants Error:", error);
+                console.error(
+                    "Load Plants Error:",
+                    error
+                );
 
-                $("plants").innerHTML =
-                    "<p>Unable to load plants.</p>";
 
-                $("table").innerHTML =
-                    `<tr>
-                        <td colspan="3">Unable to load plants.</td>
-                    </tr>`;
+                $("plants").innerHTML = `
+
+                    <div style="text-align:center;width:100%;padding:30px">
+
+                        <h3>
+                            Unable to load plants
+                        </h3>
+
+                        <p>
+                            Please refresh the page.
+                        </p>
+
+                    </div>
+
+                `;
+
+
+                $("table").innerHTML = `
+
+                    <tr>
+
+                        <td colspan="4">
+
+                            Unable to load inventory.
+
+                        </td>
+
+                    </tr>
+
+                `;
 
             }
 
         }
 
 
+        /* ================= SEARCH ================= */
+
         async function searchPlant() {
 
-            let n = $("search").value.trim();
+            let name =
+                $("search").value.trim();
 
-            if (!n)
-                return loadPlants();
+
+            if (!name) {
+
+                loadPlants();
+
+                return;
+
+            }
+
 
             try {
 
                 let response =
                     await fetch(
-                        API + "/search/" + encodeURIComponent(n)
+                        API +
+                        "/search/" +
+                        encodeURIComponent(name)
                     );
 
-                let data = await response.json();
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Search failed"
+                    );
+
+                }
+
+
+                let data =
+                    await response.json();
+
 
                 cards(data);
 
+
             } catch (error) {
 
-                console.error(error);
+                console.error(
+                    "Search error:",
+                    error
+                );
 
-                alert("Search failed");
+                alert(
+                    "Search failed"
+                );
 
             }
 
         }
 
 
-        async function order(name, price) {
+        /* ================= ORDER MODAL ================= */
+
+        function openOrder(plant) {
 
             if (!user) {
 
-                alert("Please login first");
+                alert(
+                    "Please login first"
+                );
 
-                return customerLogin();
+                customerLogin();
+
+                return;
 
             }
 
-            let customer = $("cname").value;
 
-            let qty = prompt("Enter quantity:");
+            selectedPlant = plant;
 
-            if (!customer || !qty)
-                return alert("Enter name and quantity");
 
-            let total = price * Number(qty);
+            $("paymentPlant").innerText =
+                plant.name +
+                " — ₹" +
+                plant.price;
+
+
+            $("orderCustomer").value =
+                $("cname").value.trim();
+
+
+            $("orderQty").value = "1";
+
+
+            updateOrderTotal();
+
+
+            $("paymentMessage").innerText = "";
+
+
+            $("paymentBox").style.display =
+                "grid";
+
+        }
+
+
+        function closePayment() {
+
+            $("paymentBox").style.display =
+                "none";
+
+            selectedPlant = null;
+
+        }
+
+
+        $("orderQty").addEventListener(
+            "input",
+            updateOrderTotal
+        );
+
+
+        function updateOrderTotal() {
+
+            if (!selectedPlant) {
+
+                $("orderTotal").innerText = "0";
+
+                return;
+
+            }
+
+
+            let quantity =
+                Number(
+                    $("orderQty").value || 0
+                );
+
+
+            $("orderTotal").innerText =
+                selectedPlant.price *
+                quantity;
+
+        }
+
+
+        /* ================= CREATE ORDER ================= */
+
+        async function confirmOrder() {
+
+            if (!selectedPlant) {
+
+                return;
+
+            }
+
+
+            let customer =
+                $("orderCustomer")
+                    .value
+                    .trim();
+
+
+            let quantity =
+                Number(
+                    $("orderQty").value
+                );
+
+
+            let payment =
+                document.querySelector(
+                    'input[name="payment"]:checked'
+                ).value;
+
+
+            if (!customer) {
+
+                alert(
+                    "Enter customer name"
+                );
+
+                return;
+
+            }
+
+
+            if (
+                !quantity ||
+                quantity < 1
+            ) {
+
+                alert(
+                    "Enter valid quantity"
+                );
+
+                return;
+
+            }
+
+
+            if (
+                quantity >
+                Number(selectedPlant.quantity)
+            ) {
+
+                alert(
+                    "Not enough stock available"
+                );
+
+                return;
+
+            }
+
+
+            let total =
+                selectedPlant.price *
+                quantity;
+
 
             try {
 
-                let r = await fetch(
+                /*
+                 * Existing backend accepts:
+                 * customer_name
+                 * plant_name
+                 * quantity
+                 * total_price
+                 */
 
-                    `${API}/orders?customer_name=${encodeURIComponent(customer)}&plant_name=${encodeURIComponent(name)}&quantity=${qty}&total_price=${total}`,
+                let response =
+                    await fetch(
+                        API +
+                        "/orders" +
+                        "?customer_name=" +
+                        encodeURIComponent(customer) +
+                        "&plant_name=" +
+                        encodeURIComponent(selectedPlant.name) +
+                        "&quantity=" +
+                        quantity +
+                        "&total_price=" +
+                        total,
+                        {
+                            method: "POST"
+                        }
+                    );
 
-                    {
-                        method: "POST"
-                    }
 
+                let data =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.detail ||
+                        "Order failed"
+                    );
+
+                }
+
+
+                alert(
+                    "Order placed successfully! 🎉\n\n" +
+                    "Payment Method: " +
+                    payment +
+                    "\n" +
+                    "Total: ₹" +
+                    total
                 );
 
-                let d = await r.json();
 
-                alert(d.message);
+                closePayment();
+
+
+                $("cname").value =
+                    customer;
+
+
+                loadPlants();
+
+                loadOrders();
+
 
             } catch (error) {
 
-                console.error(error);
+                console.error(
+                    "Order error:",
+                    error
+                );
 
-                alert("Order failed");
+
+                alert(
+                    "Order failed. Please try again."
+                );
 
             }
 
         }
 
 
-        /* IMAGE PREVIEW */
+        /* ================= IMAGE PREVIEW ================= */
 
-        $("pimg").onchange = function () {
+        $("pimg").addEventListener(
+            "change",
+            function () {
 
-            let file = $("pimg").files[0];
-
-            if (!file)
-                return;
-
-            let reader = new FileReader();
-
-            reader.onload = function () {
-
-                $("preview").src = reader.result;
-
-                $("preview").style.display = "inline-block";
-
-            };
-
-            reader.readAsDataURL(file);
-
-        };
+                let file =
+                    $("pimg").files[0];
 
 
-        /* ADD PLANT + IMAGE */
+                if (!file) {
 
-        async function addPlant() {
+                    return;
 
-            let b = {
+                }
 
-                name: $("name").value.trim(),
 
-                price: +$("price").value,
+                let reader =
+                    new FileReader();
 
-                quantity: +$("qty").value
 
-            };
+                reader.onload =
+                    function () {
 
-            let file = $("pimg").files[0];
+                        $("preview").src =
+                            reader.result;
 
-            if (!b.name || !b.price || !b.quantity)
-                return alert("Enter all details");
-
-            try {
-
-                let response = await fetch(
-                    API + "/plants",
-                    {
-                        method: "POST",
-
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-
-                        body: JSON.stringify(b)
-                    }
-                );
-
-                let d = await response.json();
-
-                if (file) {
-
-                    let reader = new FileReader();
-
-                    reader.onload = function () {
-
-                        localStorage.setItem(
-                            "plant_img_" + b.name.toLowerCase(),
-                            reader.result
-                        );
-
-                        loadPlants();
+                        $("preview").style.display =
+                            "inline-block";
 
                     };
 
+
+                reader.readAsDataURL(file);
+
+            }
+        );
+
+
+        /* ================= ADD PLANT ================= */
+
+        async function addPlant() {
+
+            let name =
+                $("name").value.trim();
+
+
+            let price =
+                Number($("price").value);
+
+
+            let quantity =
+                Number($("qty").value);
+
+
+            let file =
+                $("pimg").files[0];
+
+
+            if (
+                !name ||
+                !price ||
+                !quantity
+            ) {
+
+                alert(
+                    "Enter all plant details"
+                );
+
+                return;
+
+            }
+
+
+            try {
+
+                let response =
+                    await fetch(
+                        API + "/plants",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+
+                                name: name,
+
+                                price: price,
+
+                                quantity: quantity
+
+                            })
+
+                        }
+                    );
+
+
+                let data =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.detail ||
+                        "Plant add failed"
+                    );
+
+                }
+
+
+                /*
+                 * Save uploaded image locally
+                 * using the plant name temporarily.
+                 *
+                 * The actual image is NOT stored in Supabase.
+                 */
+
+                if (file) {
+
+                    let reader =
+                        new FileReader();
+
+
+                    reader.onload =
+                        async function () {
+
+                            /*
+                             * First refresh from database
+                             * to get the newly generated ID.
+                             */
+
+                            try {
+
+                                let r =
+                                    await fetch(
+                                        API +
+                                        "/plants"
+                                    );
+
+                                let plants =
+                                    await r.json();
+
+
+                                let same =
+                                    plants
+                                        .filter(
+                                            x =>
+                                                String(x.name)
+                                                    .toLowerCase() ===
+                                                name.toLowerCase()
+                                        );
+
+
+                                let newest =
+                                    same.length
+                                        ?
+                                        same[
+                                            same.length - 1
+                                        ]
+                                        :
+                                        null;
+
+
+                                if (newest) {
+
+                                    localStorage.setItem(
+                                        imageKey(newest),
+                                        reader.result
+                                    );
+
+                                }
+
+                            } catch (e) {
+
+                                localStorage.setItem(
+                                    "plant_img_" +
+                                    name.toLowerCase(),
+                                    reader.result
+                                );
+
+                            }
+
+
+                            loadPlants();
+
+                        };
+
+
                     reader.readAsDataURL(file);
+
 
                 } else {
 
@@ -835,128 +2043,404 @@
 
                 }
 
-                alert(d.message || "Plant added");
+
+                alert(
+                    data.message ||
+                    "Plant Added Successfully"
+                );
+
 
                 $("name").value = "";
+
                 $("price").value = "";
+
                 $("qty").value = "";
+
                 $("pimg").value = "";
+
                 $("preview").src = "";
-                $("preview").style.display = "none";
+
+                $("preview").style.display =
+                    "none";
+
 
             } catch (error) {
 
-                console.error(error);
+                console.error(
+                    "Add Plant Error:",
+                    error
+                );
 
-                alert("Plant add failed");
+
+                alert(
+                    "Plant add failed: " +
+                    error.message
+                );
 
             }
 
         }
 
 
+        /* ================= UPDATE PRICE ================= */
+
         async function updatePrice() {
 
-            let d = await (await fetch(
+            let name =
+                $("pn").value.trim();
 
-                `${API}/plants/${encodeURIComponent($("pn").value)}?new_price=${$("np").value}`,
 
-                {
-                    method: "PUT"
-                }
+            let price =
+                $("np").value;
 
-            )).json();
 
-            alert(d.message);
+            if (!name || !price) {
 
-            loadPlants();
+                alert(
+                    "Enter plant name and price"
+                );
+
+                return;
+
+            }
+
+
+            try {
+
+                let response =
+                    await fetch(
+                        API +
+                        "/plants/" +
+                        encodeURIComponent(name) +
+                        "?new_price=" +
+                        price,
+                        {
+                            method: "PUT"
+                        }
+                    );
+
+
+                let data =
+                    await response.json();
+
+
+                alert(
+                    data.message ||
+                    "Price updated"
+                );
+
+
+                loadPlants();
+
+
+            } catch (error) {
+
+                alert(
+                    "Update failed"
+                );
+
+            }
 
         }
 
+
+        /* ================= UPDATE QUANTITY ================= */
 
         async function updateQty() {
 
-            let d = await (await fetch(
+            let name =
+                $("qn").value.trim();
 
-                `${API}/plants/quantity/${encodeURIComponent($("qn").value)}?new_quantity=${$("nq").value}`,
 
-                {
-                    method: "PUT"
-                }
+            let quantity =
+                $("nq").value;
 
-            )).json();
 
-            alert(d.message);
+            if (
+                !name ||
+                quantity === ""
+            ) {
 
-            loadPlants();
+                alert(
+                    "Enter plant name and quantity"
+                );
+
+                return;
+
+            }
+
+
+            try {
+
+                let response =
+                    await fetch(
+                        API +
+                        "/plants/quantity/" +
+                        encodeURIComponent(name) +
+                        "?new_quantity=" +
+                        quantity,
+                        {
+                            method: "PUT"
+                        }
+                    );
+
+
+                let data =
+                    await response.json();
+
+
+                alert(
+                    data.message ||
+                    "Quantity updated"
+                );
+
+
+                loadPlants();
+
+
+            } catch (error) {
+
+                alert(
+                    "Update failed"
+                );
+
+            }
 
         }
 
+
+        /* ================= DELETE ================= */
 
         async function deletePlant() {
 
-            let n = $("dn").value;
+            let name =
+                $("dn").value.trim();
 
-            let d = await (await fetch(
 
-                `${API}/plants/${encodeURIComponent(n)}`,
+            if (!name) {
 
-                {
-                    method: "DELETE"
-                }
+                alert(
+                    "Enter plant name"
+                );
 
-            )).json();
+                return;
 
-            localStorage.removeItem(
-                "plant_img_" + n.toLowerCase()
-            );
+            }
 
-            alert(d.message);
 
-            loadPlants();
+            if (
+                !confirm(
+                    "Delete " +
+                    name +
+                    "?"
+                )
+            ) {
+
+                return;
+
+            }
+
+
+            try {
+
+                let response =
+                    await fetch(
+                        API +
+                        "/plants/" +
+                        encodeURIComponent(name),
+                        {
+                            method: "DELETE"
+                        }
+                    );
+
+
+                let data =
+                    await response.json();
+
+
+                alert(
+                    data.message ||
+                    "Plant deleted"
+                );
+
+
+                /*
+                 * Remove old local image.
+                 */
+
+                localStorage.removeItem(
+                    "plant_img_" +
+                    name.toLowerCase()
+                );
+
+
+                loadPlants();
+
+
+            } catch (error) {
+
+                alert(
+                    "Delete failed"
+                );
+
+            }
 
         }
 
+
+        /* ================= LOW STOCK ================= */
 
         async function lowStock() {
 
-            let p = await (
-                await fetch(API + "/low-stock")
-            ).json();
+            try {
 
-            $("low").innerHTML = p.length
-                ?
-                p.map(x =>
-                    `<p>⚠️ ${x.name} — Stock: ${x.quantity}</p>`
-                ).join("")
-                :
-                "<p>All plants have sufficient stock.</p>";
+                let response =
+                    await fetch(
+                        API +
+                        "/low-stock"
+                    );
+
+
+                let plants =
+                    await response.json();
+
+
+                if (
+                    !plants.length
+                ) {
+
+                    $("low").innerHTML =
+                        "<p>All plants have sufficient stock. ✅</p>";
+
+                    return;
+
+                }
+
+
+                $("low").innerHTML =
+                    plants.map(
+                        plant =>
+                            `
+                            <p>
+                                ⚠️
+                                ${escapeHtml(plant.name)}
+                                —
+                                Stock:
+                                ${plant.quantity}
+                            </p>
+                            `
+                    ).join("");
+
+
+            } catch (error) {
+
+                $("low").innerHTML =
+                    "<p>Unable to check stock.</p>";
+
+            }
 
         }
 
+
+        /* ================= ORDERS ================= */
 
         async function loadOrders() {
 
-            let p = await (
-                await fetch(API + "/orders")
-            ).json();
+            try {
 
-            $("orders").innerHTML = p.map(x =>
-                `<tr>
-                    <td>${x.customer_name}</td>
-                    <td>${x.plant_name}</td>
-                    <td>${x.quantity}</td>
-                    <td>₹${x.total_price}</td>
-                    <td>${x.status || "Placed"}</td>
-                </tr>`
-            ).join("");
+                let response =
+                    await fetch(
+                        API +
+                        "/orders"
+                    );
+
+
+                let orders =
+                    await response.json();
+
+
+                if (!orders.length) {
+
+                    $("orders").innerHTML =
+                        `
+                        <tr>
+                            <td colspan="5">
+                                No orders found.
+                            </td>
+                        </tr>
+                        `;
+
+                    return;
+
+                }
+
+
+                $("orders").innerHTML =
+                    orders.map(
+                        order =>
+                            `
+                            <tr>
+
+                                <td>
+                                    ${escapeHtml(
+                                        order.customer_name
+                                    )}
+                                </td>
+
+                                <td>
+                                    ${escapeHtml(
+                                        order.plant_name
+                                    )}
+                                </td>
+
+                                <td>
+                                    ${order.quantity}
+                                </td>
+
+                                <td>
+                                    ₹${order.total_price}
+                                </td>
+
+                                <td>
+                                    ${order.status || "Placed"}
+                                </td>
+
+                            </tr>
+                            `
+                    ).join("");
+
+
+            } catch (error) {
+
+                console.error(
+                    "Orders Error:",
+                    error
+                );
+
+                $("orders").innerHTML =
+                    `
+                    <tr>
+                        <td colspan="5">
+                            Unable to load orders.
+                        </td>
+                    </tr>
+                    `;
+
+            }
 
         }
 
 
-        /* Initial load */
+        /* ================= INITIAL LOAD ================= */
 
-        loadPlants();
+        window.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                loadPlants();
+
+            }
+        );
 
     </script>
 
